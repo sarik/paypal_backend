@@ -1,0 +1,25 @@
+<html>
+<body>
+<div id="paypal-button-container"></div>
+<script src="https://www.paypal.com/sdk/js?client-id=AeC-gBlnsj4a1ftkU7FWJduru9X4mGJr576aSxPbk0zzej9Ays1Vi8Ex6AnNy275Az974_pRKHlLj2Ir&vault=true" data-sdk-integration-source="button-factory"></script>
+<script>
+  paypal.Buttons({
+      style: {
+          shape: 'pill',
+          color: 'blue',
+          layout: 'horizontal',
+          label: 'paypal',
+          
+      },
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({
+          'plan_id': 'P-20G309353Y497353CLY5KITA'
+        });
+      },
+      onApprove: function(data, actions) {
+        alert(data.subscriptionID);
+      }
+  }).render('#paypal-button-container');
+</script>
+</body>
+</html>
